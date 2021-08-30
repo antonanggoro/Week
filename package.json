@@ -1,0 +1,30 @@
+{
+  "name": "week5",
+  "version": "1.0.0",
+  "description": "week 5 challange",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonanggoro/Week4.git"
+  },
+  "keywords": [
+    "week",
+    "5",
+    "challange",
+    "binar"
+  ],
+  "author": "antonius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonanggoro/Week4/issues"
+  },
+  "homepage": "https://github.com/antonanggoro/Week4#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "view-engine": "^1.1.1"
+  }
+}

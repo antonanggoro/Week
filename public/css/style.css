@@ -1,0 +1,175 @@
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+
+#navbar {
+  font-style: normal;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+}
+
+.main {
+  background-image: url(/Img/bgimage1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  text-emphasis-position: center;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  text-emphasis-position: center;
+}
+
+p {
+  margin-top: 100px;
+  margin: 100px;
+  color: white;
+  text-align: center;
+  text-emphasis-position: center;
+}
+
+div.main {
+  text-align: center;
+  text-emphasis-position: center;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+}
+
+.gallery {
+  background-image: url(/Img/bg\ image\ 2.jpg);
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+  justify-self: start;
+  height: 100vh;
+}
+
+.game {
+  margin: 100px auto;
+  height: 50%;
+  align-items: stretch;
+  justify-self: start;
+}
+
+.carousel-inner img {
+  margin: 100px auto;
+  height: 50%;
+  align-items: stretch;
+  justify-self: start;
+}
+
+#p2 {
+  text-align: center;
+  color: white;
+}
+
+li {
+  padding: 5px 4px 6px 7px;
+  margin-top: 20px;
+  margin-bottom: 3px;
+  color: white;
+}
+
+.feature {
+  background-image: url(/Img/Group.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.container {
+  flex-wrap: wrap;
+}
+
+.requirement {
+  background-image: url(/Img/requirements-1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.topscore {
+  background-image: url(/img/4.1.png);
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.newsletter {
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.footer {
+  background-color: black;
+}
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.logo-wrapper {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.social-links {
+  margin-top: 30px;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55acee;
+  color: white;
+}
