@@ -1,15 +1,16 @@
 const express = require("express");
-const path = require("path");
 const app = express();
+const users = require('./db/users.json');
 const port = 3000;
-const users = [];
 
-app.use(express.json());
+//const { User, Userbiodata, User_History_Game}
+const { Usergame } = require("./models");
+
 app.use(express.urlencoded({ extended: false }));
-
 app.use(express.static("public"));
-
 app.set("view engine", "ejs");
+app.use(express.json());
+
 
 app.get("/", (req, res) => {
   res.render("index");
@@ -19,42 +20,103 @@ app.get("/gamesuit", (req, res) => {
   res.render("gamesuit");
 });
 
-app.get("/register", (req, res) => {
-  res.render("register");
+app.get('/userslogin', (req, res) => {
+  res.json(users);
 });
 
-function getUser(req, res) {
-  res.json({
-    jumlahUser: users.length,
-    data: users,
-  });
-}
+app.get('/login', (req, res) => {
+  res.render('login', { message: '' });
+});
 
-function getRegister(req, res) {
-  users.push({
-    email: req.body.email,
+app.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const userFound = users.find((user) => {
+    return user.email == email;
+  })
+
+  if(!userFound) {
+    console.log('not found');
+    return res.render('login', {
+      message: 'User not found'
+    });
+  }
+
+  if(userFound.password != password) {
+    console.log('wrong pass');
+    return res.render('login', {
+      message: 'Incorrect password'
+    });
+  }
+
+  res.render('gamesuit');
+});
+
+//post user
+app.post("/usersgame", (req, res) => {
+  Usergame.create({
+    username: req.body.username,
     password: req.body.password,
+  }).then((usergane) => {
+    res.send("User game berhasil dibuat");
   });
+});
 
-  res.redirect("/");
-  //return res.render("register");
-}
+app.get("/usersgame/create", (req, res) => {
+  res.render("usersgame/create");
+});
 
-//untuk mengakses register dengan method POST
-function postRegister(req, res) {
-  users.push({
-    email: req.body.email,
-    password: req.body.password,
+
+//show all user 
+app.get("/usersgame", (req, res) => {
+  Usergame.findAll().then((usersgame) => {
+    res.render("usersgame/index2", {
+      usersgame,
+    });
   });
-  res.redirect("/");
-}
+});
 
-app.get("/user", getUser);
+// show user by id
+app.get("/usersgame/:id", (req, res) => {
+  Usergame.findOne({
+    where: { id: req.params.id },
+  }).then((usergame) => {
+    res.render("usersgame/show", {
+      usergame,
+    });
+  });
+});
 
-app.get("/register", getRegister);
+//update user
+app.get('/usersgame/update/:id', (req, res) => {
+  Usergame.findOne({ where: { id: req.params.id } })
+    .then((usergame) => {
+      res.render('usersgame/update', { usergame });
+    });
+});
 
-app.post("/register", postRegister);
+app.post('/usersgame/update/:id', (req, res) => {
+  Usergame.update({
+    username: req.body.username,
+    password: req.body.password
+  },
+  { where: { id: req.params.id } }
+  )
+  .then(() => {
+    res.send('Article berhasil diupdate');
+  });
+});
 
+//delete user
+app.get("/usersgame/delete/:id", (req, res) => {
+  Usergame.destroy({ where: { id: req.params.id } }).then(() => {
+    res.send("user berhasil dihapus");
+  });
+});
+
+
+//app.listen(3000);
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost: ${3000}`);
+  console.log(`Server is running in http://localhost:${port}`);
 });
